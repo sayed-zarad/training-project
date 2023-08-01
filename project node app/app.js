@@ -9,7 +9,7 @@ const expressLayout = require('express-ejs-layouts');
 const session = require('express-session');
 const flash = require('express-flash');
 const connectDB = require('./server/config/db.js')
-
+const methodOverride=require('method-override');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -21,6 +21,7 @@ connectDB();
 //passing data
 app.use(express.urlencoded({ extended:true}));
 app.use(express.json());
+app.use(methodOverride('_method'));
 
 //static files
 app.use(express.static('public'));
@@ -56,4 +57,4 @@ app.listen(port,()=>{
     console.log(`app listening on port ${port}`)
 });
 
-//1:27
+//1:50
